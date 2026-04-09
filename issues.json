@@ -1,0 +1,96 @@
+{
+    "project": "ECME-Swift-WASM",
+    "version": "1.0.0",
+    "issues": [
+        {
+            "id": "SWIFT-01",
+            "title": "Swift Scaffolding and WASM Toolchain Setup",
+            "dependencies": [],
+            "context": "Initialize the Swift Package Manager (SPM) structure and verify the WASM build pipeline using Carton.",
+            "background": "SwiftWasm requires the 'carton' tool for bundling. The project must support dual-targets: Native Mach-O and WASM.",
+            "requirements": [
+                "Run 'make init-pkg'",
+                "Configure Package.swift with JavaScriptKit and SQLite.swift",
+                "Verify 'make build-mac' produces a functional binary",
+                "Verify 'make build-wasm' produces a .wasm file"
+            ],
+            "definition_of_done": "Both native and WASM build targets compile without errors."
+        },
+        {
+            "id": "SWIFT-02",
+            "title": "Core Epistemic Models and Codable Implementation",
+            "dependencies": [
+                "SWIFT-01"
+            ],
+            "context": "Implement the EpistemicSignal, Proposition, and Relation models in Swift.",
+            "background": "These models are the 'DNA' of the system. They must be Codable to allow for JSON interop between the LLM, the DB, and the JS frontend.",
+            "requirements": [
+                "Implement EpistemicSignal.swift with strict Codable support",
+                "Implement RelationType enum with assoc, disc, dep, gap",
+                "Add unit tests for JSON encoding/decoding"
+            ],
+            "definition_of_done": "A JSON string from the LLM can be successfully decoded into a Swift EpistemicSignal struct."
+        },
+        {
+            "id": "SWIFT-03",
+            "title": "SQLite Persistence Layer (Native)",
+            "dependencies": [
+                "SWIFT-02"
+            ],
+            "context": "Implement the history store using SQLite.swift for the CLI target.",
+            "background": "The CLI needs to store the 7-pass history. Use SHA-256 of the source text as the primary key.",
+            "requirements": [
+                "Implement DatabaseManager using SQLite.swift",
+                "Create tables for 'signals' and 'pass_history'",
+                "Implement save/load logic for EpistemicSignal blobs"
+            ],
+            "definition_of_done": "The CLI can persist and resume a 7-pass session from a local .db file."
+        },
+        {
+            "id": "SWIFT-04",
+            "title": "The Deterministic Auditor (Pass 7)",
+            "dependencies": [
+                "SWIFT-02"
+            ],
+            "context": "Implement the Pass 7 logic in pure Swift.",
+            "background": "This is the 'Cybernetic Governor'. It must check for verbatim quotes and logical cycles (DAG check).",
+            "requirements": [
+                "Implement VerbatimQuoteChecker",
+                "Implement CycleDetector (Depth-First Search on relations)",
+                "Implement AnchorGroundingChecker"
+            ],
+            "definition_of_done": "The Auditor correctly flags a hallucinated relation in a test suite."
+        },
+        {
+            "id": "SWIFT-05",
+            "title": "WASM Bridge and JavaScript Interop",
+            "dependencies": [
+                "SWIFT-04"
+            ],
+            "context": "Expose the Deterministic Auditor to the browser via JavaScriptKit.",
+            "background": "The website (Conceptual Matrix Mapper v3) needs to call the Swift Auditor logic on the JSON data.",
+            "requirements": [
+                "Implement JSExport logic in ECMEWasm target",
+                "Create a JS-accessible function 'auditSignal(json, sourceText)'",
+                "Handle string conversion between Swift and JS"
+            ],
+            "definition_of_done": "The browser console can call the WASM module and receive an audit report."
+        },
+        {
+            "id": "SWIFT-06",
+            "title": "CLI Step Machine Wrapper",
+            "dependencies": [
+                "SWIFT-03",
+                "SWIFT-04"
+            ],
+            "context": "Build the CLI interface for the 7-pass protocol.",
+            "background": "The CLI should support 'analyze', 'replay', and 'export' commands.",
+            "requirements": [
+                "Implement ArgumentParser for CLI commands",
+                "Implement the 7-pass loop logic (calling LLM via URLSession)",
+                "Add color-coded terminal output for the matrix"
+            ],
+            "definition_of_done": "Running 'ecme analyze file.txt' completes all 7 passes and saves to DB."
+        }
+    ]
+}
