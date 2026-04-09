@@ -10,10 +10,12 @@ You are building the **ECME** in Swift. The goal is a dual-target system: Native
 - **Persistence:** SQLite3 (C-interop)
 
 ## 3. Workflow
+- **Development Approach:** **Test-Driven Development (TDD)** is mandatory. Write tests before implementation.
 - **Build Native:** `make build-mac`
 - **Build WASM:** `make build-wasm`
-- **Test:** `swift test`
+- **Test:** `make test`
 
 ## 4. Constraints
-- Use `Codable` for all Epistemic Signal structures.
-- Ensure all "Deterministic Auditor" logic is in the `Core` library so it can be shared between CLI and WASM.
+- **Changelog:** A `changelog.log` file must be maintained and updated as part of the pre-commit process.
+- **Serialization:** Use `Codable` for all Epistemic Signal structures.
+- **Logic Sharing:** Ensure all "Deterministic Auditor" logic is in the `Core` library so it can be shared between CLI and WASM.

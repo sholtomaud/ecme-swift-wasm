@@ -1,6 +1,13 @@
 repos:
   - repo: local
     hooks:
+      - id: check-changelog
+        name: Changelog Check
+        description: "Verify that changelog.log exists"
+        entry: make check-changelog
+        language: system
+        pass_filenames: false
+
       - id: swiftlint
         name: SwiftLint
         description: "Check Swift style and conventions"
@@ -14,10 +21,3 @@ repos:
         entry: make test
         language: system
         pass_filenames: false
-
-      # Optional: If you still have JS/TS for the WASM bridge
-      - id: eslint
-        name: ESLint
-        entry: npm run lint
-        language: system
-        files: \.(ts|js)$

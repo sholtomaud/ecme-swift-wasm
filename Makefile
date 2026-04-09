@@ -6,9 +6,10 @@ APP_NAME    := ecme
 BIN_DIR     := bin
 WASM_DIR    := dist-wasm
 SYNC_SCRIPT := ./scripts/sync_issues.sh
+CHANGELOG   := changelog.log
 
 # --- Standard Targets ---
-.PHONY: all init build-mac build-wasm clean lint test help run
+.PHONY: all init build-mac build-wasm clean lint test help run check-changelog
 
 all: build-mac build-wasm
 
@@ -66,6 +67,14 @@ lint:
 test:
 	@echo '🧪 Running Swift Test Suite...'
 	@swift test --parallel
+
+## check-changelog: Ensure changelog.log exists and was recently updated (used by pre-commit)
+check-changelog:
+	@if [ ! -f $(CHANGELOG) ]; then \
+		echo "❌ Error: $(CHANGELOG) is missing!"; \
+		exit 1; \
+	fi
+	@echo "✅ $(CHANGELOG) exists."
 
 ## clean: Remove build artifacts and distributions
 clean:

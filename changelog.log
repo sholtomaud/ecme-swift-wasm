@@ -1,0 +1,8 @@
+# ECME-Swift-WASM Changelog
+
+## [1.0.0-initial] - 2026-04-09
+- Initial repository scaffolding and cleanup.
+- Standard targets for Native CLI and WASM fixed.
+- Shared Core library structure implemented.
+- Added .gitignore, README.md, and AGENTS.md.
+- Configured pre-commit hooks for SwiftLint, Tests, and Changelog.
