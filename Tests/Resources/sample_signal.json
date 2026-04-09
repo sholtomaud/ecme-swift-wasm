@@ -1,0 +1,194 @@
+{
+  "title": "Ohm's Law — Rules 1–12",
+  "source": "Leith, G. (1967). What Is Programmed Learning? BBC Publications.",
+  "genre": "expository",
+  "propositions": [
+    {
+      "id": 1,
+      "text": "An electric charge is produced by friction.",
+      "position": 0.02
+    },
+    {
+      "id": 2,
+      "text": "The electron is the basic unit of charge.",
+      "position": 0.05
+    },
+    {
+      "id": 3,
+      "text": "The electron is an impractical unit of charge.",
+      "position": 0.08
+    },
+    {
+      "id": 4,
+      "text": "The coulomb is the practical unit of charge.",
+      "position": 0.11
+    },
+    {
+      "id": 5,
+      "text": "Current is a flow of charge.",
+      "position": 0.2
+    },
+    {
+      "id": 6,
+      "text": "Current is measured in coulombs per second.",
+      "position": 0.24
+    },
+    {
+      "id": 7,
+      "text": "One coulomb per second is called an ampere.",
+      "position": 0.27
+    },
+    {
+      "id": 8,
+      "text": "When current flows, work is done.",
+      "position": 0.35
+    },
+    {
+      "id": 9,
+      "text": "Energy is used when work is done.",
+      "position": 0.38
+    },
+    {
+      "id": 10,
+      "text": "Energy must be supplied for current to flow.",
+      "position": 0.42
+    },
+    {
+      "id": 11,
+      "text": "EMF measures the rate at which energy is supplied.",
+      "position": 0.46
+    },
+    {
+      "id": 12,
+      "text": "Energy is measured in joules.",
+      "position": 0.5
+    }
+  ],
+  "relations": [
+    {
+      "from": 1,
+      "to": 2,
+      "type": "assoc",
+      "justification": "Both establish the concept of electric charge."
+    },
+    {
+      "from": 1,
+      "to": 4,
+      "type": "assoc",
+      "justification": "Both concern defining charge."
+    },
+    {
+      "from": 2,
+      "to": 3,
+      "type": "assoc",
+      "justification": "Both address the electron as a unit."
+    },
+    {
+      "from": 2,
+      "to": 4,
+      "type": "disc",
+      "justification": "Electron vs coulomb: practical vs impractical unit."
+    },
+    {
+      "from": 3,
+      "to": 4,
+      "type": "disc",
+      "justification": "Direct contrast: impractical vs practical unit."
+    },
+    {
+      "from": 4,
+      "to": 5,
+      "type": "dep",
+      "justification": "Current as flow of charge requires prior definition of charge unit."
+    },
+    {
+      "from": 5,
+      "to": 6,
+      "type": "dep",
+      "justification": "Measuring current in coulombs/sec requires understanding current."
+    },
+    {
+      "from": 6,
+      "to": 7,
+      "type": "dep",
+      "justification": "Ampere is defined as one coulomb per second."
+    },
+    {
+      "from": 7,
+      "to": 8,
+      "type": "assoc",
+      "justification": "Current flow is associated with work being done."
+    },
+    {
+      "from": 8,
+      "to": 9,
+      "type": "dep",
+      "justification": "Energy use depends on understanding that work is done."
+    },
+    {
+      "from": 9,
+      "to": 10,
+      "type": "dep",
+      "justification": "Energy must be supplied follows from energy being used."
+    },
+    {
+      "from": 10,
+      "to": 11,
+      "type": "dep",
+      "justification": "EMF is defined in terms of energy supply rate."
+    },
+    {
+      "from": 9,
+      "to": 12,
+      "type": "assoc",
+      "justification": "Both concern energy; joules measure the energy in rule 9."
+    },
+    {
+      "from": 11,
+      "to": 12,
+      "type": "assoc",
+      "justification": "EMF rate is measured in units related to joules."
+    },
+    {
+      "from": 5,
+      "to": 8,
+      "type": "assoc",
+      "justification": "Current flow and work done are associated phenomena."
+    },
+    {
+      "from": 6,
+      "to": 9,
+      "type": "assoc",
+      "justification": "Rate of charge flow associated with rate of energy use."
+    }
+  ],
+  "clusters": [
+    {
+      "label": "Charge",
+      "ids": [
+        1,
+        2,
+        3,
+        4
+      ]
+    },
+    {
+      "label": "Current",
+      "ids": [
+        5,
+        6,
+        7
+      ]
+    },
+    {
+      "label": "Energy & EMF",
+      "ids": [
+        8,
+        9,
+        10,
+        11,
+        12
+      ]
+    }
+  ]
+}

@@ -1,5 +1,13 @@
 # ECME-Swift-WASM Changelog
 
+## [1.1.0] - 2026-04-09
+- Implemented `LLMProvider` protocol-based abstraction for LLM services.
+- Added `LlamaLocalProvider` targeting `llama.cpp` server on port 8080.
+- Added `MockLLMProvider` for deterministic testing and CI environments.
+- Updated CLI entry point to support `LLM_MODE=mock` environment variable.
+- Enhanced test suite with automated skipping for local integration tests during CI.
+- Updated Makefile to default to Mock Mode for the `test` target.
+
 ## [1.0.0-initial] - 2026-04-09
 - Initial repository scaffolding and cleanup.
 - Standard targets for Native CLI and WASM fixed.

@@ -63,10 +63,10 @@ lint:
 		echo '⚠️  SwiftLint not found. Skipping lint.'; \
 	fi
 
-## test: Run Swift tests in parallel
+## test: Run Swift tests in parallel (MOCK mode enabled by default)
 test:
-	@echo '🧪 Running Swift Test Suite...'
-	@swift test --parallel
+	@echo '🧪 Running Swift Test Suite (Mock Mode)...'
+	@LLM_MODE=mock swift test --parallel
 
 ## check-changelog: Ensure changelog.log exists and was recently updated (used by pre-commit)
 check-changelog:
