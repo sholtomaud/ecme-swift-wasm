@@ -29,8 +29,13 @@ init:
 	@echo "🚀 Syncing issues to GitHub..."
 	@$(SYNC_SCRIPT)
 
+## init-pkg: Resolve Swift package dependencies
+init-pkg:
+	@echo "📦 Resolving Swift dependencies..."
+	@swift package resolve
+
 ## run: Build and run the native CLI target
-run: build-mac
+run: build-linux
 	@$(BIN_DIR)/$(APP_NAME)
 
 ## build-mac: Build Native macOS Universal Binary (arm64 + x86_64)
@@ -39,6 +44,14 @@ build-mac:
 	@swift build -c release --product $(APP_NAME) --arch arm64 --arch x86_64
 	@mkdir -p $(BIN_DIR)
 	@cp .build/apple/Products/Release/$(APP_NAME) $(BIN_DIR)/$(APP_NAME)
+	@echo "✅ Native binary located at: $(BIN_DIR)/$(APP_NAME)"
+
+## build-linux: Build Native Linux Binary
+build-linux:
+	@echo '🐧 Building Native Linux Binary...'
+	@swift build -c release --product $(APP_NAME)
+	@mkdir -p $(BIN_DIR)
+	@cp .build/release/$(APP_NAME) $(BIN_DIR)/$(APP_NAME)
 	@echo "✅ Native binary located at: $(BIN_DIR)/$(APP_NAME)"
 
 ## build-wasm: Build WebAssembly module via Carton
