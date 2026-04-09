@@ -1,0 +1,17 @@
+# Swift
+.build/
+Packages/
+Package.resolved
+.swiftpm/
+
+# Apple
+.DS_Store
+DerivedData/
+
+# Project Specific
+bin/
+dist-wasm/
+.carton/
+
+# VS Code
+.vscode/

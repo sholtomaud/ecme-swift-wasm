@@ -1,0 +1,23 @@
+repos:
+  - repo: local
+    hooks:
+      - id: swiftlint
+        name: SwiftLint
+        description: "Check Swift style and conventions"
+        entry: make lint
+        language: system
+        files: \.swift$
+      
+      - id: swift-test
+        name: Swift Test
+        description: "Run the Swift test suite"
+        entry: make test
+        language: system
+        pass_filenames: false
+
+      # Optional: If you still have JS/TS for the WASM bridge
+      - id: eslint
+        name: ESLint
+        entry: npm run lint
+        language: system
+        files: \.(ts|js)$
