@@ -19,19 +19,27 @@ Dual-target system for the **ECME** protocol, built in Swift for both Native CLI
 make init
 ```
 
-### Build Native CLI
+### Build Targets
+- **Native macOS**: `make build-mac`
+- **WebAssembly**: `make build-wasm`
+- **Test Suite**: `make test`
+
+## 🏃 Running the Program
+
+### Native CLI
+You can run the built binary directly:
 ```bash
-make build-mac
+./bin/ecme
+```
+Or use Swift Package Manager to run it in-place:
+```bash
+swift run ecme
 ```
 
-### Build WebAssembly
+### WebAssembly (WASM)
+To launch a development server and preview the WASM implementation in your browser:
 ```bash
-make build-wasm
-```
-
-### Run Tests
-```bash
-make test
+carton dev
 ```
 
 ## 📂 Project Structure

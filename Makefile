@@ -8,7 +8,7 @@ WASM_DIR    := dist-wasm
 SYNC_SCRIPT := ./scripts/sync_issues.sh
 
 # --- Standard Targets ---
-.PHONY: all init build-mac build-wasm clean lint test help
+.PHONY: all init build-mac build-wasm clean lint test help run
 
 all: build-mac build-wasm
 
@@ -27,6 +27,10 @@ init:
 	@swift package resolve
 	@echo "🚀 Syncing issues to GitHub..."
 	@$(SYNC_SCRIPT)
+
+## run: Build and run the native CLI target
+run: build-mac
+	@$(BIN_DIR)/$(APP_NAME)
 
 ## build-mac: Build Native macOS Universal Binary (arm64 + x86_64)
 build-mac:
