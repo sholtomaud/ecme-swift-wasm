@@ -6,3 +6,8 @@
 - Shared Core library structure implemented.
 - Added .gitignore, README.md, and AGENTS.md.
 - Configured pre-commit hooks for SwiftLint, Tests, and Changelog.
+
+## [SWIFT-01] - 2026-04-09
+- Installed Swift 6.0.3 toolchain.
+- Updated Makefile with `init-pkg` and `build-linux` targets.
+- Documented WASM toolchain setup challenges (Carton build-from-source blocked by compiler crash).
